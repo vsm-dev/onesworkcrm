@@ -1,0 +1,42 @@
+@{
+    ViewBag.Title = "Настройки подключения к базе"; 
+}
+
+<div class="container p-3 my-3 border">
+    <form asp-action="@ViewContext.RouteData.Values["action"]" asp-route-id="@Model?.ИдентификаторБазы">
+        <legend>Настройки подключения к базе</legend>
+        <div class="my-3 form-floating">
+            <input type="text" name="ИдентификаторБазы" class="form-control" value="@Model?.ИдентификаторБазы" readonly>
+            <label for="ИдентификаторБазы" class="form-label">ID базы</label>
+        </div>
+        <div class="my-3 form-floating">
+            <input type="text" name="Наименование" class="form-control" value="@Model?.Наименование" required>
+            <label for="Наименование" class="form-label">Имя базы</label>
+        </div>
+        <div class="my-3 form-floating">
+            <input type="text" name="ВерсияПлатформы" class="form-control" value="@Model?.ВерсияПлатформы" required>
+            <label for="ВерсияПлатформы" class="form-label">Версия платформы</label>
+        </div>
+        <div class="my-3 form-floating">
+            <input type="text" name="ИмяСервера" class="form-control" value="@Model?.ИмяСервера">
+            <label for="ИмяСервера" class="form-label">Адрес сервера (для клиент-серверной базы)</label>
+        </div>
+        <div class="my-3 form-floating">
+            <input type="text" name="ИмяСервернойБазы" class="form-control" value="@Model?.ИмяСервернойБазы">
+            <label for="ИмяСервернойБазы" class="form-label">Имя базы (для клиент-серверной базы)</label>
+        </div>
+        <div class="my-3 form-floating">
+            <input type="text" name="ПутьКФайловойБазе" class="form-control" value="@Model?.ПутьКФайловойБазе">
+            <label for="ПутьКФайловойБазе" class="form-label">Путь к каталогу базы (для файловой базы)</label>
+        </div>
+        <div class="my-3 form-floating">
+            <input type="text" name="ПользовательПоУмолчанию" class="form-control" value="@Model?.ПользовательПоУмолчанию" required>
+            <label for="ПользовательПоУмолчанию" class="form-label">Имя пользователя</label>
+        </div>
+        <div class="my-3 form-floating">
+            <input type="password" name="ПарольПоУмолчанию" class="form-control" value="@Model?.ПарольПоУмолчанию">
+            <label for="ПарольПоУмолчанию" class="form-label">Пароль пользователя</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>

@@ -1,0 +1,34 @@
+@{
+    ViewBag.Title = "Список информационных баз"; 
+}
+
+<div class="container p-0 my-3">
+    <a class="btn btn-outline-primary" asp-action="add" role="button">Добавить</a>
+</div>
+
+@foreach(var row in Model) {
+    <div class="container p-3 my-3 border">
+        <p class="h3">@row.Наименование</p>
+        <div class="d-grid gap-3 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-outline-secondary ones" value="@row.ИдентификаторБазы"
+                name="designer">Конфигуратор</button>
+            <button type="button" class="btn btn-outline-secondary ones" value="@row.ИдентификаторБазы"
+                name="enterprise">Предприятие</button>
+            <a class="btn btn-outline-secondary" asp-action="edit" asp-route-id="@row.ИдентификаторБазы" role="button">Редактировать</a>
+            <a class="btn btn-outline-danger" asp-action="delete" asp-route-id="@row.ИдентификаторБазы" role="button">Удалить</a>
+        </div>
+    </div>
+}
+
+@section Script {
+    <script>
+        for (element of document.querySelectorAll("button.ones")) {
+            element.onclick = function () {
+                alert(`${this.name} - ${this.value}`);
+                fetch('https://api.github.com/repos/javascript-tutorial/ru.javascript.info/commits')
+                    .then(response => response.json())
+                    .then(commits => alert(commits[0].author.login));
+            }
+        }
+    </script>
+}
